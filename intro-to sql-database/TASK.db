@@ -167,3 +167,45 @@ WHERE EmpName = 'Youssef Mahmoud' AND EmpSalary > 12000;
 SELECT EmpName, EmpSalary
 FROM Employees
 WHERE EmpName = 'Youssef Mahmoud' AND NOT EmpSalary = 25000;
+
+-- SQL Predicates
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName IN('Youssef Mahmoud', 'John Mark', 'Sarah Malek');
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName NOT IN('Youssef Mahmoud', 'John Mark', 'Sarah Malek');
+
+SELECT *
+FROM Employees
+WHERE EmpSalary BETWEEN 20000 AND 40000;
+
+SELECT *
+FROM Employees
+WHERE EmpSalary NOT BETWEEN 20000 AND 40000;
+
+SELECT *
+FROM Employees
+WHERE DeptId IS NULL;
+
+SELECT *
+FROM Employees
+WHERE DeptId IS NOT NULL;
+
+SELECT *
+FROM Employees
+WHERE EmpName LIKE 'y%'; -- Start character should be 'y'
+
+SELECT *
+FROM Employees
+WHERE EmpName LIKE '%d'; -- Last character should be 'd'
+
+SELECT *
+FROM Employees
+WHERE EmpName LIKE '%j%'; -- String Contain character 'j'
+
+SELECT *
+FROM Employees
+WHERE EmpName LIKE '_a%'; -- First character Anything and Second character is 'a'

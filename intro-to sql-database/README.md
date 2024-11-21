@@ -179,3 +179,14 @@
     * Arithmetic operators: `+, -, *, /, %`
     * Comparison operators: `=, < ,>, <=, >=, <>, !=`
     * Logical operators: `AND and ALL, AND, OR and NOT, BETWEEN, EXISTS, IN, LIKE, IS NULL`
+
+## SQL Server Predicates
+
+  * A predicate is a condition or expression that determines which row of data should be included or excluded from a query result
+  * They are used in WHERE clause to filter data based on specific criteria
+  * The Transact-SQL language supports the following predicates:
+    * In operator
+    * Exists function
+    * Between operator
+    * Like Operator
+    * All and any operator
