@@ -84,3 +84,54 @@
     * Name of the table
     * Name of the fields
     * Definitions for each field
+
+## SQL Server Constraints
+
+  * In database we can add some rules to column known as constraints, These rules control the that can be stored in a column
+  * Insert operation will be terminated if inserted data violates the defined constraint
+  * They are responsible for ensuring column data accuracy, integrity, and reliability inside table
+  * Example if a column has NT NULL constraint it means the column cannot store NULL values
+  * SQL Server categorize the consrains into two types
+    * Table level constraints:
+      * These constraint apply to entire table that limit the types of data that are entered into table
+      * Its definitions are specified after creating the table using the ALTER statement
+    * Column level constraints
+      * These constraints is apply to the single or multiple columns to limit the types of data that can be entered into the column
+      * Its definetion is specified while creating the tables
+    * Constraint used in SQL Server are
+      * `NOT NULL`: Means you must enter value to this field
+        * Syntax: `CREATE TABLE table_name( column_name data_type NOT NULL);`
+      * `UNIQUE`: The value should not be duplicated 
+        * Syntax: `CREATE TABLE table_name( column_name data_type UNIQUE);`
+      * `PRIMARY KEY`: Means field should have a unique value and not empty
+        * Syntax:
+        ```CREATE TABLE table_name(
+        column1 data_type,
+        ...,
+        [CONSTRAINT constraint_name] PRIMARY KEY (column1)
+        );```
+      * `FOREIGN KEY`: Is key define a relation between two tables has unique value and connot be null and refers to primary key in parent table
+        * Syntax:
+        ```
+        CREATE TABLE table_name (
+            column1 data_type,
+            column2 data_type,
+            ...,
+            FOREIGN KEY (column_name)
+            REFRENCES referenced_table_name (refrenced_column_name)
+        )
+        ```
+      * `CHECK`: Define limit or range of values in a column
+        * Syntax:
+        ```
+        CREATE TABLE table_name (
+            column1 data_type CHECK(condition)
+        );
+        ```
+      * `DEFAULT`: Default value in the column when the user does not specify any value for that column
+        * Syntax:
+        ```
+        CREATE TABLE table_name (
+            column1 data_type DEFAULT default_value
+        );
+        ```

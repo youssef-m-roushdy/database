@@ -42,3 +42,27 @@ DELETE FROM Employees
 --Delete Specific Record
 DELETE FROM Employees
 WHERE EmpId = 105
+
+-- Delete table and create it with Demontrating Constaints on them
+
+DROP TABLE Employees;
+
+CREATE TABLE Depatrments
+(DeptId INT PRIMARY KEY AUTO_INCREMENT,
+DeptName VARCHAR(50) NOT NULL,
+DeptLocation VARCHAR(50) CHECK(DeptLocation IN ('H250S1', 'H250S2', 'H250S3')),
+DeptAddedDate DATETIME DEFAULT NOW()
+);
+
+CREATE TABLE Employees (
+EmpId INT PRIMARY KEY AUTO_INCREMENT,
+EmpName VARCHAR(50) NOT NULL,
+EmpSalary FLOAT CHECK (EmpSalary > 5000),
+EmpEmail VARCHAR(255) UNIQUE, -- MAX is not valid for VARCHAR in MySQL
+HireAddedDate DATETIME DEFAULT NOW(), -- Default for DATETIME works in MySQL 5.6+
+DeptId INT,
+CONSTRAINT FK_DeptId FOREIGN KEY (DeptId) REFERENCES Depatrments (DeptId) -- Fixed table name typo
+);
+
+SELECT * FROM Depatrments;
+SELECT * FROM Employees;
