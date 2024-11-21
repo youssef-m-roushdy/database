@@ -1,0 +1,18 @@
+"How To Create Database And Insert Data Into It"
+
+CREATE DATABASE Couresradb;
+
+USE Couresradb;
+
+CREATE TABLE Employees
+(EmpId INT,
+EmpName VARCHAR(20),
+EmpSalary FLOAT,
+HireDate DATETIME
+);
+
+SELECT * FROM Employees;
+
+INSERT INTO Employees VALUES(120, "Youssef Mahmoud", 12000, NOW());
+INSERT INTO Employees VALUES(105, "Mohamed Ali", 25000, '2022-01-23');
+INSERT INTO Employees(EmpID, EmpName, EmpSalary) VALUES(105, "Sarah Malek", 25000);
