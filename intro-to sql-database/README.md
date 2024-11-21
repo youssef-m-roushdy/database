@@ -190,3 +190,73 @@
     * Between operator
     * Like Operator
     * All and any operator
+
+# SQL Server Joins
+
+  * Joins are used to combine rows from two or more tables from based on related column between them
+  * Joins are essential for retrieving data that is distributed across multiple tables
+  * They allow us to establish relationship between tables
+  
+### Types Of Joins In SQL
+
+  * Inner Join
+    * `INNER JOIN` Keyword selects all rows from both the tables as long as the condition is satisfied
+    * This Keyword will create the result-set by combining all rows from both the tables where the condition satisfies value of the common field will be the same
+    * Syntax:
+    ```
+    SELECT table1.column1, table1.column2, table2.coulmn1,.....
+    FROM table1
+    INNER JOIN table2
+    ON table1.matching_column = table2.matching_column;
+    ```
+  * Self Join
+    * As the name signifies in SELF JOIN a table is joined to itself
+    * That is each row of the table is joined with itself and all other rows depending on some conditions
+    * Syntax
+    ```
+    SELECT a.column1, b.column2
+    FROM table_name a, table_name b
+    WHERE some_condition
+  * Outer Join
+    * Left Outer Join
+      * This join returns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join
+      * For the rows for which there is no matching row the right side, the result-set will contain null
+      * Syntax
+      ```
+      SELECT table1.column1, table1.column2, table2.coulmn1,....
+      FROM table1 LEFT OUTER JOIN table2
+      ON table1.matching_column = table2.matching_column;
+      ```
+    * Right Outer Join
+      * This join returns all the rows of the table on the right side of the join and matches rows for the table on the right side of the join
+      * For the rows for which there is no matching row the left side, the result-set will contain null
+      * Syntax
+      ```
+      SELECT table1.column1, table1.column2, table2.coulmn1,....
+      FROM table1 RIGHT OUTER JOIN table2
+      ON table1.matching_column = table2.matching_column;
+      ```
+    * Full Outer Join
+      * Creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN
+      * The result-set will contain all the rows from both tables
+      * For the rows for which there is no matching the result-set will contain NULL values
+      * Syntax
+      ```
+      SELECT table1.column1, table1.column2, table2.coulmn1,....
+      FROM table1 LEFT OUTER JOIN table2
+      ON table1.matching_column = table2.matching_column
+      UNION
+      SELECT table1.column1, table1.column2, table2.coulmn1,....
+      FROM table1 RIGHT OUTER JOIN table2
+      ON table1.matching_column = table2.matching_column;
+      ```
+  * Cross Join
+    * The CROSS JOIN is also known as CARTESIAN JOIN
+    * In a CARTESIAN JOIN there is a join for each row of one table to every row of another table
+    * This usually happens when the matching column or WHERE condition is not specified
+    * Syntax
+    ```
+    SELECT table1.column1, table1.column2, table2.coulmn1,....
+    FROM table1
+    CROSS JOIN table2
+    ```
