@@ -1,0 +1,44 @@
+-- How To Create Database And Insert Data Into It
+
+-- Define New Database
+CREATE DATABASE Couresradb;
+
+-- Use That Database
+USE Couresradb;
+
+-- Create Table To Store Data
+CREATE TABLE Employees
+(EmpId INT,
+EmpName VARCHAR(20),
+EmpSalary FLOAT,
+HireDate DATETIME
+);
+
+-- Get All Table Data From Specific Table In Database
+SELECT * FROM Employees;
+
+-- Insert Data To Specific Table in Database 
+INSERT INTO Employees VALUES(120, "Youssef Mahmoud", 12000, NOW());
+INSERT INTO Employees VALUES(105, "Mohamed Ali", 25000, '2022-01-23');
+-- Insert Specific Data
+INSERT INTO Employees(EmpID, EmpName, EmpSalary) VALUES(105, "Sarah Malek", 25000);
+
+-- Updating Data on Specific Table on Database
+
+-- If you don't specify a condition it will update all records 
+UPDATE Employees
+SET HireDate = NOW();
+
+-- Update specific record
+UPDATE Employees
+SET HireDate = '2023-01-01', EmpSalary = 40000
+WHERE EmpName="Sarah Malek";
+
+-- Delete Records From Database
+
+--Delete All records
+DELETE FROM Employees
+
+--Delete Specific Record
+DELETE FROM Employees
+WHERE EmpId = 105
