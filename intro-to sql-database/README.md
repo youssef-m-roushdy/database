@@ -170,3 +170,12 @@
     * The system maintains the global variable. A user cannot declare them
     * The global variable starts with `@@`
     * It stores session related information 
+
+## SQL Server Operators
+
+  * The operators are symbols that are used to perform operations with values
+  * These operators are used with SQL clauses sech as: `WHERE, SELECT, ON etc`
+  * The operators in SQL ca be categorized as:
+    * Arithmetic operators: `+, -, *, /, %`
+    * Comparison operators: `=, < ,>, <=, >=, <>, !=`
+    * Logical operators: `AND and ALL, AND, OR and NOT, BETWEEN, EXISTS, IN, LIKE, IS NULL`
