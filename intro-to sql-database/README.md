@@ -147,3 +147,26 @@
     * GROUP BY CLAUSE
     * HAVING CLAUSE
     * ORDER BY CLAUSE
+
+## SQL Server Data Types
+
+  * Datatype specifies the type of the data that the object can store, or a column can store. This type can be integer data, string data, date and time, binary strings, etc
+  * Assigning an appropriate data type to columns in a table is crucial while designing a database
+  * It affects the performance and effeciency of the database and the application using the database
+  * SQL Server provides built-in data types for all kind of data that you can store within the SQL Server database
+  * Additionally, you can also define your own data type that's a generic type in T-SQL
+  * Variable are the object which act as a placeholder to a memory location
+  * It hold single data value
+  * A variable allows a programmer to store data temporaily during the execution of code
+  * Syntax: `DECLARE {@LOCAL_VARIABLE data_type [ = vlaue]}
+
+### Variables Type in SQL Server
+ 
+  * Local Variable
+    * A user declares local variable
+    * By default local variable starts with `@`
+    * Every local variable scope has the restriction to the current batch or procedure within any givin session 
+  * Global Variable
+    * The system maintains the global variable. A user cannot declare them
+    * The global variable starts with `@@`
+    * It stores session related information 

@@ -101,7 +101,7 @@ SELECT EmpId, EmpName, EmpSalary
 FROM Employees
 WHERE EmpSalary > 15000;
 
---Order By Clause
+-- Order By Clause
 
 SELECT EmpId, EmpName, EmpSalary
 FROM Employees
@@ -114,3 +114,18 @@ ORDER BY EmpName ASC, EmpSalary ASC;
 SELECT EmpId, EmpName, EmpSalary, EmpSalary * 12 AnnualSalary
 FROM Employees
 ORDER BY AnnualSalary ASC;
+
+-- You can a stored procedure or a block of code within BEGIN...END to store variables:
+
+DELIMITER $$
+
+CREATE PROCEDURE PrintMessage()
+BEGIN
+    DECLARE message VARCHAR(200);
+    SET message = 'Hello World!!';
+    SELECT message;
+END$$
+
+DELIMITER ;
+
+CALL PrintMessage();
