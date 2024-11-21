@@ -135,3 +135,15 @@
             column1 data_type DEFAULT default_value
         );
         ```
+
+## SQL Server Clauses
+
+  * SQL clauses help us to retrieve a set of records or bundle from the table
+  * It help us to specify a condition on the columns or the records of a table
+  * A clause is nothing but a built-in function that helps to fetch the required records or tuples from a database table
+  * Most of the clauses are conditional clauses where the large amount of data is stored in the database and clauses helps us to filter and analysis the queries as well
+  * Clauses Examples
+    * WHERE CLAUSE
+    * GROUP BY CLAUSE
+    * HAVING CLAUSE
+    * ORDER BY CLAUSE

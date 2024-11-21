@@ -64,5 +64,53 @@ DeptId INT,
 CONSTRAINT FK_DeptId FOREIGN KEY (DeptId) REFERENCES Depatrments (DeptId) -- Fixed table name typo
 );
 
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail)
+VALUES("Sarah Malek", 25000, "sarah@gmail.com");
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail)
+VALUES("Youssef Mahmoud", 15000, "youssef@gmail.com");
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail, DeptId)
+VALUES("Mohamed Ali", 17000, "mohamed@gmail.com", 2);
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail, DeptId)
+VALUES("Majed Maher", 35000, "majed@gmail.com", 1);
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail, DeptId)
+VALUES("John Mark", 27000, "john@gmail.com", 3);
+
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Analizing', 'H250S1');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Planinig', 'H250S2');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Working', 'H250S3');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Trading', 'H250S1');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Managing', 'H250S1');
+
 SELECT * FROM Depatrments;
 SELECT * FROM Employees;
+
+-- Projection is to restrict the number of columns
+SELECT EmpId, EmpName, EmpSalary FROM Employees;
+
+-- Selection is to restrict the number of rows
+SELECT * FROM Employees
+WHERE EmpSalary > 15000;
+
+-- Both projection & Selection
+SELECT EmpId, EmpName, EmpSalary
+FROM Employees
+WHERE EmpSalary > 15000;
+
+--Order By Clause
+
+SELECT EmpId, EmpName, EmpSalary
+FROM Employees
+WHERE EmpSalary > 15000 ORDER BY EmpName DESC;
+
+SELECT EmpId, EmpName, EmpSalary
+FROM Employees
+ORDER BY EmpName ASC, EmpSalary ASC;
+
+SELECT EmpId, EmpName, EmpSalary, EmpSalary * 12 AnnualSalary
+FROM Employees
+ORDER BY AnnualSalary ASC;
