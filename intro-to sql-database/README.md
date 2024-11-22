@@ -260,3 +260,63 @@
     FROM table1
     CROSS JOIN table2
     ```
+
+## SQL Server Views
+
+  * A view is a database object that has no value
+  * It is virtual table which created according to the result set of an SQL query
+  * However, it looks similar to an actual table containing rows and columns
+  * Therefore we can say that its contents are based on the base table
+  * It is operated similary to the base table but does not contain any data of its own
+  * Its name is always unique like tables
+  * Views differ from tables as they are definitions that are created on top of other tables
+  * If any changes occur int the underlying table, the same changes reflected in the views also
+  * Syntax
+  ```
+  SELECT column1, column2, ....
+  FROM table1, table2, table3
+  WHERE...
+  ```
+
+### Uses Of Views
+
+  * To restrict data access
+  * To implement the security access
+  * To provide data independence
+  * To present different views of the same data
+
+## Types Of Views
+
+  * System Defined View
+    * System-defined vies are predefined and existing views stored in SQL server
+    * Such as Tempdb, Master, and temp
+    * Each system views has its properties and functions
+    * They can automatically attach to the user-defined databases
+    * System Defined View
+      * Information Schema View
+        * Are used to display information from DB like tables and columns
+        * This type of view start with INFORMATION_SCHEMA
+        * Example: `SELECT * FROM INFORMATION_SCHEMA`
+      * Catalog View
+        * Set of system views that provide metadata about the database objects and server configration
+        * This views are part of sys schema and contain information about structure organization, and properties of data and its objects
+        * Example: `SELECT * FROM SYS.TABLES`
+      * Dynamic Management View
+        * Are special types of views that expose internal information and statics about the SQL Server instance
+        * DMVs are for monitoring and troubleshooting purposes
+        * It provides a real-time insights into the performance resouces usage and internal state of the database engine
+        * Example: 
+        ```
+        SELECT Connection_id, sesssion_id, client_net_address
+        FROM SYS.DM_EXEC_CONNECTIONS
+        ```
+        * Two types of DMVs:
+          * Server-scoped Dynamic Management View
+            * Stored in master database
+          * Database-scoped Dynamic Management View
+            * Stored in Each Database
+  * User Defined Views
+    * User defines these views to meet their specific requirements
+    * It can also divide into two types one is the simple view and another is the complex view
+    * The simple view is based on the single base table along with using any complex queries
+    * The complex view is based on more than one table along with group by caluse order by clause and join conditions

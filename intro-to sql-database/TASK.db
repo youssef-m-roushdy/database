@@ -239,3 +239,19 @@ UNION
 SELECT e.EmpName, d.DeptName
 FROM Employees as e RIGHT OUTER JOIN Depatrments as d
 ON e.DeptId = d.DeptId;
+
+-- Types Of Views
+
+-- Information Schema
+SELECT * 
+FROM information_schema.CHECK_CONSTRAINTS 
+LIMIT 100;
+
+SELECT * 
+FROM information_schema.tables
+WHERE TABLE_NAME IN('Employees', 'Depatrments');
+
+--Catalog view
+
+SELECT * 
+FROM information_schema.tables;
