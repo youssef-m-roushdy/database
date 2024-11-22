@@ -255,3 +255,30 @@ WHERE TABLE_NAME IN('Employees', 'Depatrments');
 
 SELECT * 
 FROM information_schema.tables;
+
+-- User Defined View
+
+CREATE VIEW vw_EPM4
+AS 
+SELECT * FROM Employees
+WHERE DeptId = 4;
+
+SELECT * FROM vw_EPM4;
+
+ALTER VIEW vw_EPM4
+AS 
+SELECT EmpId, EmpName, EmpSalary FROM Employees
+WHERE DeptId = 4;
+
+CREATE VIEW vw_EmpDept3
+AS 
+SELECT e.EmpName, d.DeptName, e.EmpSalary, d.DeptLocation
+FROM Employees e JOIN Depatrments d
+ON e.DeptId = d.DeptId
+AND d.DeptId = 3;
+
+SELECT * FROM vw_EmpDept3;
+
+DROP VIEW vw_EPM4;
+
+DROP VIEW vw_EmpDept3;
