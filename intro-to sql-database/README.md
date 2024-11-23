@@ -320,3 +320,25 @@
     * It can also divide into two types one is the simple view and another is the complex view
     * The simple view is based on the single base table along with using any complex queries
     * The complex view is based on more than one table along with group by caluse order by clause and join conditions
+
+## SQL Server Indexes
+
+  * SQL Indexes are used in relational databases to retrieve data quickly
+  * They are similar to indexes at the end of the books whose purpose is quickly finding a topic
+  * SQL provides `Create Index, Alter Index, and Drop Index` commands used to create a new index update an existing one and delete an index
+  * A SQL Server Index is used on databse table for faster data access
+  * An index is mostly created on one or more columns which are commonly used in SELECT clause and WHERE clause
+
+### Types Of Indexes In SQL Server
+
+  * Clustered Indexes
+    * The clustered index defines the order in which the table data will be sorted and stored
+    * When defined clustred index on a column it will sort data based on column values and store it, Thus helps in faster retrieval of data
+    * There can be one clustered index on a table beacuase the data rows can be stored in only one order
+    * When you create Primary Key constraint on a table a unique clastred index is automatically created on the table
+  * Non-Clustered Indexes
+    * The structure of non-clustred indexes is similar to the clustred index except that the actual data is not contained in the leaf nodes
+    * A non-clustered index has non-clustred index key values and each key-value entry contains a refrence to the actual data
+    * Depending on how the table data is stored it could point to a data value in the clustred index or a heap structure
+    * If row locator is a pointer to the row it is a heap structure
+    * If row located in clustered index key it is claustred table
