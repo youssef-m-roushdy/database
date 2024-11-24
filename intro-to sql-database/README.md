@@ -491,4 +491,101 @@
 ## SQL Server Triggers
 
   * A trigger is set of SQL statements that reside in system memory with unique names
-  * A trigger is called a special procedure becasue it can not be called dir
+  * A trigger is called a special procedure becasue it can not be called directly like a stored procedure
+  * The distiniction between trigger and procedure is that:
+    * A trigger is called automatically when a data modification event occurs agnaist a table
+    * Whereas a stored procedure must be invoked directly
+  * Each trigger is always associated with a table
+  * Syntax:
+  ```
+  CREATE TRIGGER schema.trigger_name
+  ON table_name
+  AFTER {INSERT, UPDATE, DELETE}
+  [NOT FOR REPLICATON]
+  AS
+  {SQL Statements}
+  ```
+  * Triggers are hellpfull to execute some events automatically on certain desirable scenarios
+
+### Types of SQL Triggers
+
+  * Data Definition Language(DDL) Triggers
+    * Fired in response to DDL events such as `CREATE`, `ALTER`, and `DROP` statements
+    * We can create these triggers at database level server depending on type of DDL events
+    * It can also be executed in response to certain system-defined stored procedures that 
+    do DDL-like operations
+    * Syntax
+    ```
+    CREATE TRIGGER trigger_name
+    ON {DATABASE | ALL SERVER}
+    [WITH ddl_trigger_option]
+    FOR {event_typr | event_group}
+    AS
+    {sql_statements}
+    ```
+    * Useful in following scenario:
+      * Prevent the database scheme from changing
+      * Audit changes made in the database schema
+      * Respond to change made in the database schema
+  * Data Manipulation Language (DML) Triggers
+    * Fired in a response to DML events like `INSER`, `UPDATE`, and `DELETE` statements in user's table or view
+    * It can also be executed in response to DML-like operations by system-defined stored    procedures 
+    * Syntax
+    ```
+    CREATE TRIGGER [schema_name.]trigger_name
+    ON {table_name | view_name}
+    {FOR | AFTER | INSTEAD OF} {[INSERT], [UPDATE], [DELETE]}
+    [NOT FOR REPLICATON]
+    AS
+    {sql_statements}
+    ```
+    * DML Triggers can be:
+      * After Triggers
+        * Fires when SQL Server completes the the triggering action successfully, that fired it
+        * This trigger is executed when a table completes an insert, update, or delete operation
+        * It is not supported in views
+        * Classify After trigger to:
+          * AFTER INSERT trigger
+          * AFTER UPDATE trigger
+          * AFTER DELETE trigger
+        * Syntax
+        ```
+        CREATE TRIGGER schema_name.trigger_name
+        ON table_name
+        AFTER {INSERT, UPDATE, DELETE}
+        [NOT FOR REPLICATON]
+        AS
+        BEGIN
+          -- Trigger statements
+          -- Insert, Updatem or Delete statements
+        END;
+        ```
+        * Instead Of Trigger
+          * Instead of trigger fires before SQL Server begins to execute triggering operation that triggered
+          * It means that no condition constaint check is needed before the trigger runs
+          * As a result even if the constraint check fails this trigger will fire
+          * It is opposite of the `AFTER TRIGGER`
+          * Classify Instead of trigger to:
+            * INSTEAD OF INSERT trigger
+            * INSTEAD OF UPDATE trigger
+            * INSTEAD OF DELETE trigger
+          * Syntax
+          ```
+          CREATE TRIGGER schema_name.trigger_name
+          ON table_name
+          INSTEAD OF {INSERT, UPDATE, DELETE}
+          [NOT FOR REPLICATON]
+          AS
+          BEGIN
+            -- Trigger statements
+            -- Insert, Updatem or Delete statements
+          END;
+          ```
+  * Logon Triggers
+    * Fires in response to a LOGON event
+    * The LOGON event occurs when a user session is generated with an SQL Server instance
+    * Which is made after authentication of logging is completed but beffore stablishing
+    a user session
+    * As result the SQL Server error log will display all messages created by the trigger
+    * Icluding error messages and the PRINT statement messages
+    * If authentication fails logon triggers do not execute
