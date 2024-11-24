@@ -395,3 +395,100 @@
     ```
     * We can create a stored procedure with `SELECT`, `INSERT`, `UPDATE`, and `DELETE` SQL
     statements
+
+## SQL Server Functions
+
+  * Function in SQL Server are similar to functions in other programming languages
+  * They contains SQL statements that perform some specific task
+  * Function can have a input parameter and must return a single value or multiple records
+
+## Types Of Functions
+
+  * System-Defined Function
+    * These functions are defined by SQL Server for different purposes
+    * The functions that are defined by the system are known as "system defined functions"
+    * Usage of the built-n functions saves much development time while performing certain tasks
+    * These function work with SQL select statement to calculate values and manipulated data
+    * System Functions:
+      * Scalar Functions
+        * Operate on a single value and return a single value
+        * Below is the is the list of some usefull SQL Scalar functions 
+          * `abs(-10.49)`: Return the absolute number of the given number => 10.49
+          * `rand(10)`: Generate random number of 10 characters
+          * `round(1723,76313, 2)`: Round the given number to 2 places => 1723,76
+          * `upper('course')`: Return the uppercase of given string 'COURSE'
+          * `lower('COURSE')`: Return The lower case of given string 'course'
+          * `Itrim(' course')`: Remove the spaces from the left-hand side of the string => 'course'
+          * `convert(int, 25.75)`: Convert given number float value to integer => 25
+      * Aggregate Functions
+        * `max()`: Returns maximum value from collection of value
+        * `min()`: Returns minimum value from collection of value
+        * `avg()`: Returns average value from collection of value
+        * `count()`: Returns number of items from the collection
+  * User-Defined Function
+    * Functions are created by the user
+    * These functions may accept required parameters and return the processed data
+    * This functions help us to simplify the overall database development
+    * As it encapsulates the complex buisness logic and making it available for reuse whenever any similar functionality is required
+    * The user-defined functions hold the code that is needed to query data a lot easier to write
+    * It also improves query readability, accessability, and functionality as well as allows other developers to replicate the same procedures accordingly
+
+### User-Defined Scalar Functions
+
+  * Scalar function always accepts parameters, either single or multiple and returns a single value
+  * The scalar functions are useful in simplification of our code 
+  * Suppose we might have a complex computation that appears in a number of queries
+  * In such case we can we can build a scalar function that encapsulates the formula and uses it in each query instead of in each query
+  * Syntax
+  ```
+  CREATE FUNCTION schema_name.function_name(parameter_list)
+  RETURNS data_type AS
+  BEGIN
+      statements
+      RETURN value
+  END;
+  ```
+
+### SQL Server Table Valued Functions
+
+  * Inline Table Valued Function
+    * This UDF function return a table variable based on the action performed by the function
+    * A single SELECT statement should be used to determine the value of table variable
+    * The below example will create a table-values functions and retrieve the data of employee table:
+    ```
+    -- It creates a table-values function to get employees
+    CREATE FUNCTION fudf_GetEmployee()
+    RETURN TABLE
+    AS
+    RETURN (SELECT * FROM Employees)
+    ```
+  * Multi-Statement Table Valued Function
+    * This UDF function returns a table variable based on the action performed by the function 
+    * It can contain single or multiple statements produce the result
+    * And it is also a function that returns the result of multiple statements in a tabular
+    * It is useful becasue we can execute multiple statements in this function and get aggregated results into the returned table
+    * We can define this function by using a table variable as a return value
+    * Inside the function we execute multiple queries and insert data into this table variable
+    * The following example creates a function name `MULTIVALUED` that returns the `@Employee` table
+    * Statement
+    ```
+    CREATE FUNCTION MULTIVALUED()
+    RETURNS @Employee TABLE
+    (
+      id INT,
+      emp_name VARCHAR(50),
+      salary INT
+    )
+    AS
+    BEGIN
+      INSERT INTO @Employee
+      SELECT E.id, E.emp_name, E.salary FROM E;
+      UPDATE @Employee SET emp_name = 'Greame smith' WHERE id = 3;
+      RETURN
+    END
+    ```
+
+## SQL Server Triggers
+
+  * A trigger is set of SQL statements that reside in system memory with unique names
+  * A trigger is called a special procedure becasue it can not be called dir
