@@ -321,3 +321,108 @@ INSERT INTO EmployeeDetails VALUES(107, 'Waled', 25000, '2022-1-3');
 INSERT INTO EmployeeDetails VALUES(135, 'John', 30000, '2021-5-6');
 INSERT INTO EmployeeDetails(EmpId, EmpName, EmpSalaray) VALUES(120, 'Sarah', 35000);
 
+-- Create stored procedure In MySQL
+
+DELIMITER $$
+
+CREATE PROCEDURE usp_GetEmployeeList()
+BEGIN
+    SELECT EmpId, EmpName, EmpSalary
+    FROM Employees;
+END$$
+
+DELIMITER ;
+
+CALL usp_GetEmployeeList;
+
+
+-- Creating Stored Procedure With Parameter
+
+DELIMITER $$
+
+CREATE PROCEDURE usp_GetEmployeesListWithDeptId(IN deptid INT)
+BEGIN
+    SELECT EmpId, EmpName, EmpSalary
+    FROM Employees
+    WHERE Employees.DeptId = deptid;
+END$$
+CALL usp_GetEmployeesListWithDeptId(2);
+DELIMITER ;
+
+-- Alter Stored Procedure With Parameter
+-- There is no Drop Procedure in MySQL Instead We Use
+-- Fisrt Delete Store Procedure
+-- Second Create Procedure with updated statements
+DROP PROCEDURE IF EXISTS usp_GetEmployeesListWithDeptId;
+DELIMITER $$
+CREATE PROCEDURE usp_GetEmployeesListWithDeptId(IN deptid INT, IN empsalary FLOAT)
+BEGIN
+    SELECT EmpId, EmpName, EmpSalary
+    FROM Employees
+    WHERE Employees.DeptId = deptid AND Employees.EmpSalary > empsalary;
+END$$
+DELIMITER ;
+CALL usp_GetEmployeesListWithDeptId(2, 10000);
+
+-- Show Procedure Inforamtion
+SHOW CREATE PROCEDURE usp_GetEmployeesListWithDeptId\G
+
+-- Create A Insert Store Procedure
+DELIMITER $$
+CREATE PROCEDURE usb_InsertEmployee
+(
+    IN eid INT,
+    IN ename VARCHAR(200),
+    IN esalary FLOAT,
+    IN eemail VARCHAR(200),
+    IN eempaddeddate datetime,
+    IN ediptid INT
+)
+BEGIN
+    INSERT INTO Employees
+    VALUES(eid, ename, esalary, eemail, eempaddeddate, ediptid);
+END;
+DELIMITER;
+
+CALL usb_InsertEmployee(6, "Gamal", 32000, "gamal@gmail.com", NOW(), 1);
+SELECT * FROM Employees;
+
+-- Create A Delete Store Procedure
+
+DELIMITER $$
+CREATE PROCEDURE usb_DeleteEmployee
+(
+    IN eid INT
+)
+BEGIN
+    DELETE FROM Employees
+    WHERE EmpId = eid;
+END;
+DELIMITER;
+
+CALL usb_DeleteEmployee(1);
+SELECT * FROM Employees;
+
+-- Create A Update Store Procedure
+DELIMITER $$
+CREATE PROCEDURE usb_UpdateEmployee
+(
+    IN eid INT,
+    IN ename VARCHAR(200),
+    IN esalary FLOAT,
+    IN eemail VARCHAR(200),
+    IN eempaddeddate datetime,
+    IN edeptid INT
+)
+BEGIN
+    UPDATE Employees
+    SET EmpName = ename,
+        EmpSalary = esalary,
+        EmpEmail = eemail,
+        HireAddedDate = eempaddeddate,
+        DeptId = edeptid
+    WHERE EmpId = eid;
+END;
+DELIMITER;
+CALL usb_UpdateEmployee(2, "Youssef", 40000, "youssef@gmail.com", "2020-11-17", 1);
+SELECT * FROM Employees;

@@ -342,3 +342,56 @@
     * Depending on how the table data is stored it could point to a data value in the clustred index or a heap structure
     * If row locator is a pointer to the row it is a heap structure
     * If row located in clustered index key it is claustred table
+
+## Stored Procedures
+
+  * A stored prodcedure in SQL is a group of SQL statements that are stored together in a database
+  * based on the statements in the prodcedure and the parameters you pass it can perform one or multiple DML operations on the database and return value if any
+  * It allow you to pass the same statements multiple times, thereby, enabling reusability
+  * The SQL Database server stores the stored procedures as named objects
+  * Syntax
+  ```
+  CREATE PROCEDURE prodcedure_name
+  As
+  sql_statement
+  GO;
+  ```
+
+### Benefits of Stored Procedures
+
+  * Reusable
+  * Easy to modify
+  * Securiy
+  * Low Network traffic
+  * Increases objects
+
+### Types of Stored  Procedure
+
+  * System-Defined Procedures
+    * In stored procedures are already defined in SQL Server
+    * These are phsically stored in hidden SQL Server Resource Database and logically apear in
+    the sys schema of each user-defined and system-defined database
+    * This prodedure starts with `sp_prefix`
+    * Some of system defined procedure
+      * `sp_rename`: It is used to rename a database object like stored procedure, views, table
+      * `sp_changeowner`: It is used to change owner of database object
+      * `sp_help`: It provides details on any database object
+      * `sp_helpdb`: It provides the details of the databases defined in SQL Server
+      * `sp_helptext`: It provides the text of stored procedure reside in SQL Server
+  * User-Defined Stored Procedures
+    * They are precompiled database objects that contain SQL statement and procedural logic
+    * They are created by users to encapsulate and execute a sequence operations in the database
+    * To create a user-defined stored procedures in SQL Server you use `CREATE PROCEDURE`
+    statement
+    ```
+    CREATE PROCEDURE [ProdcedureName]
+      @param1 datatype,
+      @param2 datatype
+    AS
+    BEGIN
+    -- procedure logic go here
+    -- SQL statements, control structures, variable
+    END;
+    ```
+    * We can create a stored procedure with `SELECT`, `INSERT`, `UPDATE`, and `DELETE` SQL
+    statements
