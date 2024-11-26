@@ -1,0 +1,28 @@
+-- SQL Treggers
+
+CREATE TABLE EmployeeLog
+(
+    LogId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    EmpId INT NOT NULL,
+    Operation VARCHAR(200) NOT NULL,
+    UpdatedDate DATETIME NOT NULL
+);
+
+SELECT * FROM EmployeeDetails;
+SELECT * FROM EmployeeLog;
+
+-- Create Insert Trigger
+
+DELIMITER $$
+
+CREATE TRIGGER trgEmployeeInsert
+AFTER INSERT ON EmployeeDetails
+FOR EACH ROW
+BEGIN
+    INSERT INTO EmployeeLog (EmpId, Operation, UpdatedDate)
+    VALUES (NEW.EmpId, 'INSERT', NOW());
+END$$
+
+DELIMITER ;
+
+INSERT INTO EmployeeDetails VALUES(175, 'Ali', 75000, '2019-1-5');

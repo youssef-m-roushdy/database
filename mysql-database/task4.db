@@ -1,0 +1,37 @@
+-- SQL Operators
+
+SELECT EmpName, EmpSalary, EmpSalary * 12
+FROM Employees;
+
+SELECT EmpName, EmpSalary, EmpSalary * 12 AnnualSalary
+FROM Employees;
+
+SELECT EmpName, EmpSalary, EmpSalary * 12 'Annual Salary'
+FROM Employees;
+
+SELECT EmpName, EmpSalary, EmpSalary * 12 as 'Annual Salary'
+FROM Employees;
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpSalary >= 17000;
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName = 'Youssef Mahmoud';
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName <> 'Youssef Mahmoud';
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName = 'Youssef Mahmoud' OR EmpName = 'John Mark';
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName = 'Youssef Mahmoud' AND EmpSalary > 12000;
+
+SELECT EmpName, EmpSalary
+FROM Employees
+WHERE EmpName = 'Youssef Mahmoud' AND NOT EmpSalary = 25000;

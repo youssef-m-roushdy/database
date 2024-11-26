@@ -1,0 +1,29 @@
+-- SQL Joins
+
+--Inner Join
+SELECT Employees.EmpName, Depatrments.DeptName
+FROM Employees INNER JOIN Depatrments
+ON Employees.DeptId = Depatrments.DeptId;
+
+SELECT e.EmpName, d.DeptName
+FROM Employees as e INNER JOIN Depatrments as d
+ON e.DeptId = d.DeptId;
+
+--Left Join
+SELECT e.EmpName, d.DeptName
+FROM Employees as e LEFT OUTER JOIN Depatrments as d
+ON e.DeptId = d.DeptId;
+
+SELECT e.EmpName, d.DeptName
+FROM Employees as e RIGHT OUTER JOIN Depatrments as d
+ON e.DeptId = d.DeptId;
+
+-- Full Join
+
+SELECT e.EmpName, d.DeptName
+FROM Employees as e LEFT OUTER JOIN Depatrments as d
+ON e.DeptId = d.DeptId
+UNION
+SELECT e.EmpName, d.DeptName
+FROM Employees as e RIGHT OUTER JOIN Depatrments as d
+ON e.DeptId = d.DeptId;

@@ -1,0 +1,27 @@
+-- Projection is to restrict the number of columns
+
+SELECT EmpId, EmpName, EmpSalary FROM Employees;
+
+-- Selection is to restrict the number of rows
+SELECT * FROM Employees
+WHERE EmpSalary > 15000;
+
+-- Both projection & Selection
+
+SELECT EmpId, EmpName, EmpSalary
+FROM Employees
+WHERE EmpSalary > 15000;
+
+-- Order By Clause
+
+SELECT EmpId, EmpName, EmpSalary
+FROM Employees
+WHERE EmpSalary > 15000 ORDER BY EmpName DESC;
+
+SELECT EmpId, EmpName, EmpSalary
+FROM Employees
+ORDER BY EmpName ASC, EmpSalary ASC;
+
+SELECT EmpId, EmpName, EmpSalary, EmpSalary * 12 AnnualSalary
+FROM Employees
+ORDER BY AnnualSalary ASC;

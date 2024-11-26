@@ -1,0 +1,40 @@
+-- SQL Functions
+
+-- Scalar Functions
+
+SELECT EmpId, UPPER(EmpName) "Employee Name", EmpSalary
+FROM Employees; 
+
+-- Aggregate Functions
+SELECT AVG(EmpSalary) AverageSalary,
+       SUM(EmpSalary) TotalSalary,
+       MIN(EmpSalary) MinimumSalary,
+       MAX(EmpSalary) MaximumSalary
+FROM Employees; 
+
+SELECT AVG(EmpSalary) AverageSalary
+FROM Employees
+GROUP BY DeptId
+
+-- Create User-Scalar Function In MySQL
+
+DELIMITER $$
+
+CREATE FUNCTION GetAverageSalary(deptid INT)
+RETURNS FLOAT
+DETERMINISTIC
+BEGIN
+    DECLARE avgsalary FLOAT DEFAULT 0;
+
+    SELECT AVG(EmpSalary)
+    INTO avgsalary
+    FROM Employees
+    WHERE Employees.DeptId = deptid;
+
+    RETURN avgsalary;
+END$$
+DELIMITER ;
+
+DROP FUNCTION GetAverageSalary;
+
+SELECT GetAverageSalary(3) AS AverageSalary;

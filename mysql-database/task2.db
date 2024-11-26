@@ -1,0 +1,42 @@
+-- create it with Demontrating Constaints on them
+CREATE TABLE Depatrments
+(DeptId INT PRIMARY KEY AUTO_INCREMENT,
+DeptName VARCHAR(50) NOT NULL,
+DeptLocation VARCHAR(50) CHECK(DeptLocation IN ('H250S1', 'H250S2', 'H250S3')),
+DeptAddedDate DATETIME DEFAULT NOW()
+);
+
+CREATE TABLE Employees (
+EmpId INT PRIMARY KEY AUTO_INCREMENT,
+EmpName VARCHAR(50) NOT NULL,
+EmpSalary FLOAT CHECK (EmpSalary > 5000),
+EmpEmail VARCHAR(255) UNIQUE, -- MAX is not valid for VARCHAR in MySQL
+HireAddedDate DATETIME DEFAULT NOW(), -- Default for DATETIME works in MySQL 5.6+
+DeptId INT,
+CONSTRAINT FK_DeptId FOREIGN KEY (DeptId) REFERENCES Depatrments (DeptId) -- Fixed table name typo
+);
+
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail)
+VALUES("Sarah Malek", 25000, "sarah@gmail.com");
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail)
+VALUES("Youssef Mahmoud", 15000, "youssef@gmail.com");
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail, DeptId)
+VALUES("Mohamed Ali", 17000, "mohamed@gmail.com", 2);
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail, DeptId)
+VALUES("Majed Maher", 35000, "majed@gmail.com", 1);
+INSERT INTO Employees(EmpName, EmpSalary, EmpEmail, DeptId)
+VALUES("John Mark", 27000, "john@gmail.com", 3);
+
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Analizing', 'H250S1');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Planinig', 'H250S2');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Working', 'H250S3');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Trading', 'H250S1');
+INSERT INTO Depatrments(DeptName, DeptLocation)
+VALUES('Managing', 'H250S1');
+
+SELECT * FROM Depatrments;
+SELECT * FROM Employees;

@@ -1,0 +1,37 @@
+-- Create indexes
+
+CREATE TABLE EmployeeDetails
+(
+    EmpId INT,
+    EmpName VARCHAR(20),
+    EmpSalaray FLOAT,
+    HireDate DATETIME
+);
+
+--Create Clustered Index In MySQL
+ALTER TABLE EmployeeDetails
+ADD PRIMARY KEY (EmpId);
+
+--Create Non-Clustered Index In MySQL
+CREATE INDEX idx_EmployeeDetails_EmpName
+ON EmployeeDetails(EmpName);
+
+-- Add unique constraint to index
+DROP INDEX idx_EmployeeDetails_EmpName
+ON EmployeeDetails;
+
+CREATE UNIQUE INDEX idx_EmployeeDetails_EmpName
+ON EmployeeDetails (EmpName);
+SHOW INDEX FROM EmployeeDetails;
+
+DROP INDEX idx_EmployeeDetails_EmpId
+ON EmployeeDetails;
+
+SELECT * FROM EmployeeDetails;
+
+INSERT INTO EmployeeDetails VALUES(103, 'King', 12000, NOW());
+INSERT INTO EmployeeDetails VALUES(115, 'Youssef', 17000, '2023-4-5');
+INSERT INTO EmployeeDetails VALUES(109, 'Maher', 20000, '2022-12-12');
+INSERT INTO EmployeeDetails VALUES(107, 'Waled', 25000, '2022-1-3');
+INSERT INTO EmployeeDetails VALUES(135, 'John', 30000, '2021-5-6');
+INSERT INTO EmployeeDetails(EmpId, EmpName, EmpSalaray) VALUES(120, 'Sarah', 35000);
