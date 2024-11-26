@@ -9,7 +9,7 @@
   <tr>
     <td>MySQL Database</td>
     <td>SQL Database</td>
-    <td><a href="./intro-to sql-database/">Click Here</a></td>
+    <td><a href="./mysql-database/">Click Here</a></td>
   </tr>
   <tr>
     <td>SQL Server Database</td>
